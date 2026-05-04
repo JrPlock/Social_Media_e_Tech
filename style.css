@@ -167,3 +167,76 @@ footer { background: #02050A; padding: 60px 0 30px; text-align: center; }
 .solutions-grid .sol-card:nth-child(1) { transition-delay: 0.1s; }
 .solutions-grid .sol-card:nth-child(2) { transition-delay: 0.3s; }
 .solutions-grid .sol-card:nth-child(3) { transition-delay: 0.5s; }
+/* =========================================
+   RESPONSIVIDADE (MOBILE & TABLET)
+   Sem alterações no HTML
+========================================= */
+
+/* Ajustes para Tablets (Telas médias) */
+@media (max-width: 992px) {
+    /* Empilha todas as grades que antes eram lado a lado */
+    .grid-4, .solutions-grid, .grid-3, .grid-2 { 
+        grid-template-columns: 1fr; 
+        gap: 30px; 
+    }
+    
+    .expert-text { text-align: center; }
+    .expert-img { margin-bottom: 20px; max-width: 80%; margin-left: auto; margin-right: auto; }
+}
+
+/* Ajustes para Celulares (Telas pequenas) */
+@media (max-width: 768px) {
+    /* Header - Centraliza a logo e o botão, esconde o menu em texto */
+    .nav-bar {
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        padding: 15px 0;
+        gap: 15px;
+    }
+    .nav-bar nav {
+        display: none; /* Esconde os links internos para não quebrar a tela, focando no botão */
+    }
+
+    /* Hero Section - Reduz fontes e espaçamentos */
+    .hero { padding: 150px 0 60px; }
+    .main-headline { font-size: 2.2rem; margin-bottom: 20px; }
+    .sub-headline { font-size: 0.8rem; letter-spacing: 2px; }
+    .hero-desc { font-size: 1rem; padding: 0 10px; margin-bottom: 30px; }
+    
+    /* Botão Principal Mobile - Ocupa quase toda a largura */
+    .btn-neon-green.large {
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        font-size: 1rem;
+        padding: 15px 20px;
+    }
+
+    /* Faixa de Autoridade - Empilha os ícones */
+    .authority-banner { margin-top: 50px; }
+    .authority-banner .logos {
+        flex-direction: column;
+        gap: 15px;
+        font-size: 1.1rem;
+        display: flex;
+    }
+
+    /* Ajuste de Títulos e Preenchimentos das Seções */
+    .section-header h2, .title-center, .expert-text h2 { font-size: 2rem; }
+    .methodology, .solutions, .expert { padding: 60px 0; }
+    
+    /* Method Cards - Reduz padding para caber melhor na tela */
+    .method-card, .sol-card { padding: 30px 20px; }
+    
+    /* Numbers Banner */
+    .numbers-banner { padding: 40px 0; }
+    .numbers-banner h2 { font-size: 2.5rem; }
+    .numbers-banner p { font-size: 0.9rem; }
+
+    /* Footer - Ajuste de espaçamento */
+    footer { padding: 40px 0 20px; }
+    .footer-logo { font-size: 1.5rem; }
+    .socials { gap: 15px; }
+}
