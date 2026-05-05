@@ -240,3 +240,102 @@ footer { background: #02050A; padding: 60px 0 30px; text-align: center; }
     .footer-logo { font-size: 1.5rem; }
     .socials { gap: 15px; }
 }
+/* =========================================
+   CARROSSEL DE CLIENTES (Loop Infinito CSS)
+========================================= */
+.client-carousel {
+    background-color: var(--bg-dark-blue);
+    padding: 60px 0;
+    overflow: hidden; /* Esconde a barra de rolagem horizontal */
+}
+
+.carousel-title {
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+}
+
+.carousel-track-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+}
+
+/* Sombras laterais para dar o efeito de que as logos estão "sumindo" nas bordas */
+.carousel-track-container::before,
+.carousel-track-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+}
+.carousel-track-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-dark-blue) 0%, transparent 100%);
+}
+.carousel-track-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-dark-blue) 0%, transparent 100%);
+}
+
+.carousel-track {
+    display: inline-flex;
+    gap: 80px;
+    align-items: center;
+    /* A mágica acontece aqui: A animação rola o eixo X continuamente */
+    animation: scroll 15s linear infinite;
+}
+
+/* Pausa a animação se o usuário colocar o mouse em cima */
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.logo-slide {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-slide img {
+    height: 40px; /* Padroniza a altura para logos diferentes não quebrarem o layout */
+    max-width: 150px;
+    object-fit: contain;
+    /* Deixa as logos limpas e cinzas */
+    filter: grayscale(100%) opacity(0.5);
+    transition: all 0.3s ease;
+}
+
+/* Efeito Premium ao passar o mouse */
+.logo-slide:hover img {
+    filter: grayscale(0%) opacity(1);
+    filter: drop-shadow(0 0 10px var(--neon-purple));
+}
+
+/* O Keyframe que move as logos */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    /* Move até -50% porque a outra metade são as logos duplicadas, fechando o loop */
+    100% { transform: translateX(-50%); } 
+}
+
+/* Ajuste rápido para o Mobile */
+@media (max-width: 768px) {
+    .carousel-track-container::before,
+    .carousel-track-container::after {
+        width: 40px;
+    }
+    .logo-slide img {
+        height: 30px;
+    }
+    .carousel-track {
+        gap: 40px;
+    }
+}
